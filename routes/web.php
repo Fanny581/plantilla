@@ -1,6 +1,6 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\dashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return view('auth.login');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dash', [DashController::class, 'index']);
